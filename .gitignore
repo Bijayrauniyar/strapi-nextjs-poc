@@ -1,0 +1,11 @@
+.env
+node_modules/
+src/node_modules
+Backend/node_modules
+\#*\#
+*.*~
+.editorconfig
+.vscode
+.devcontainer
+*.code-workspace
+

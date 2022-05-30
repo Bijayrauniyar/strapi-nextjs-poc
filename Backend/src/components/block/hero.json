@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_block_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "angle-double-down"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

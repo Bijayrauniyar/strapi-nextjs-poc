@@ -1,0 +1,42 @@
+version: '3.7'
+services:
+  strapi:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    image: khalti/strapi:14
+    container_name: strapi_app
+    environment:
+      - NODE_ENV=${ENVIRONMENT}
+      - DATABASE_CLIENT=postgres
+      - DATABASE_HOST=${DATABASE_HOST}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+    volumes:
+      - ./app/public/uploads:/app/public/uploads
+      - ./app/config:/app/config
+    depends_on:
+      - db
+
+  db:
+    container_name: strapi_postgres
+    image: postgres
+    restart: always
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+
+  nginx:
+    image: nginx
+    container_name: strapi_nginx
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - 8082:80 
+    depends_on:
+      - strapi

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_header_headers",
+  "info": {
+    "displayName": "header",
+    "icon": "align-justify",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    }
+  }
+}
